@@ -18,9 +18,16 @@ class SearchBooks extends Component{
 	}
 
 	searchForBooks = query => {
+		if(query.length == 0){
+			this.setState(() => ({
+				result: []
+			}))
+
+			return;
+		}
+		
 		BooksAPI.search(query)
 			.then((result) => {
-				debugger;
 		        this.setState(() => ({
 		          result: result
 		        }))
@@ -58,19 +65,20 @@ class SearchBooks extends Component{
 	            </div>
 	            <div className="search-books-results">
 	              <ol className="books-grid">
-	              	{result.map(book => (
-	        				<li key={book.id}>
-	        					<Book 
-	        						title={book.title}
-	        						authors={book.authors}
-	        						imgThumb={book.imageLinks.smallThumbnail}
-	        						bookId={book.id}
-	        						shelf={book.shelf}
-	        						updateShelf = {onUpdateShelf}
-	        					/>
-	        				</li>
-	        			))
-            		}
+	              	{ result.error ? (<li>No Results Found</li>) :
+		              	result.map(book => (
+		        				<li key={book.id}>
+		        					<Book 
+		        						title={book.title}
+		        						authors={book.authors}
+		        						imgThumb={book.imageLinks.smallThumbnail}
+		        						bookId={book.id}
+		        						shelf={book.shelf}
+		        						updateShelf = {onUpdateShelf}
+		        					/>
+		        				</li>
+		        			))
+	            		}
 	              </ol>
 	            </div>
 	        </div>

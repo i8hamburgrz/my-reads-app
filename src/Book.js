@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 
 class Book extends Component{
 	state = {
-	  optionsState: this.props.shelf || 'none'
+	  optionsState: this.props.shelf || 'none',
+	  className: "start_" + this
 	}
 
 	updateShelf = value => {
+		debugger;
 		this.props.updateShelf(this.props.bookId, value);
 	}
 
+	handleUpdateBookRating = value => {
+		debugger;
+		this.props.updateBookRating(this.props.bookId, 2);
+	}
+
+
 	render(){
-		const { title, authors, imgThumb } = this.props;
+		const { title, authors, imgThumb, rating } = this.props;
 		const { optionsState } = this.state;
 
 		return (
@@ -31,6 +39,14 @@ class Book extends Component{
 			  </div>
 			  
 			  <div className="book-title">{ title }</div>
+
+			  <div className={rating ? 'book-rating rating_' + rating : 'book-rating'} onClick={(event) => this.handleUpdateBookRating(event.target.value)}>
+				<span>☆</span>
+				<span>☆</span>
+				<span>☆</span>
+				<span>☆</span>
+				<span>☆</span>
+			  </div>
 			  
 			  { authors && authors.map(author => (<div className="book-authors" key={author}> { author } </div> ))}
 

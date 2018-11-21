@@ -172,3 +172,64 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+/* Rating */
+.book-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  cursor: pointer;
+}
+.book-rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.book-rating > span:hover:before,
+.book-rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   color:gold;
+}
+
+
+.search-books-results .book-rating{
+  cursor: default;
+  pointer-events: none;
+}
+
+
+.book-rating.rating_1 > span:first-child:after{
+    content: "\2605";
+    position: absolute;
+    color:gold;
+    left:0;
+}
+
+.book-rating.rating_2 > span:nth-child(n+2):after{
+  content: "\2605";
+  position: absolute;
+  color:gold;
+  left:0;
+}
+
+.book-rating.rating_3 > span:nth-child(n+3):after{
+  content: "\2605";
+  position: absolute;
+  color:gold;
+  left:0;
+}
+
+.book-rating.rating_4 > span:nth-child(n+3):after{
+    content: "\2605";
+    position: absolute;
+    color:gold;
+    left:0;
+}
+
+.book-rating.rating_5 > span:after{
+    content: "\2605";
+    position: absolute;
+    color:gold;
+    left:0;
+}
+

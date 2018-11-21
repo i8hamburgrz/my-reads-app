@@ -5,7 +5,7 @@ import Book from './Book';
 class ListBooks extends Component{
 
 	render(){
-		const { myBooks, updateShelf } = this.props;
+		const { myBooks, updateShelf, onUpdateBookRating } = this.props;
 
 		return (
 			<div className="list-books">
@@ -28,6 +28,8 @@ class ListBooks extends Component{
           	            						updateShelf={updateShelf}
           	            						bookId={book.id}
           	            						shelf={book.shelf}
+          	            						rating={book.averageRating}
+          	            						updateBookRating={onUpdateBookRating}
           	            					/>
           	            				</li>
           	            			))
@@ -51,6 +53,8 @@ class ListBooks extends Component{
 	          	            					updateShelf={updateShelf}
 	          	            					bookId={book.id}
 	          	            					shelf={book.shelf}
+	          	            					rating={book.averageRating}
+	          	            					updateBookRating={onUpdateBookRating}
 	          	            				/>
 	          	            			</li>
 	          	            		))
@@ -74,6 +78,8 @@ class ListBooks extends Component{
 	          	            					updateShelf={updateShelf}
 	          	            					bookId={book.id}
 	          	            					shelf={book.shelf}
+	          	            					rating={Math.ceil(book.averageRating)}
+	          	            					updateBookRating={onUpdateBookRating}
 	          	            				/>
 	          	            			</li>
 	          	            		))
